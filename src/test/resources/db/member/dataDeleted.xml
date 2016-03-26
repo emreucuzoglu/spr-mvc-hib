@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<organizations id="1" name="org1" />
+
+	<teams id="1" name="team1" rating="1" organization_id="1" />
+	<teams id="2" name="team2" rating="1" organization_id="1" />
+
+	<members id="2" name="name2" />
+
+	<member_team member_id="2" team_id="1" />
+</dataset>

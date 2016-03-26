@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<organizations id="1" name="org1" />
+	<organizations id="2" name="org2" />
+	<organizations id="3" name="org3" />
+</dataset>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<changeSet id="1" author="emreu">
+		<createTable tableName="organizations">
+			<column name="id" type="int">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<createTable tableName="teams">
+			<column name="id" type="int">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="rating" type="int">
+				<constraints nullable="false" />
+			</column>
+			<column name="organization_id" type="int">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<createTable tableName="members">
+			<column name="id" type="int">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<createTable tableName="member_team">
+			<column name="member_id" type="int">
+				<constraints nullable="false" />
+			</column>
+			<column name="team_id" type="int">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<addForeignKeyConstraint baseColumnNames="organization_id" baseTableName="teams"
+			constraintName="fk_team_organization_id" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="id"
+			referencedTableName="organizations" />
+
+		<addForeignKeyConstraint baseColumnNames="member_id" baseTableName="member_team"
+			constraintName="fk_member_team_member_id" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="id"
+			referencedTableName="members" />
+
+		<addForeignKeyConstraint baseColumnNames="team_id" baseTableName="member_team"
+			constraintName="fk_member_team_team_id" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="id"
+			referencedTableName="teams" />
+
+	</changeSet>
+
+</databaseChangeLog>
